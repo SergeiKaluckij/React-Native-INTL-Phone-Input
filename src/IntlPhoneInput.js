@@ -127,11 +127,11 @@ export default class IntlPhoneInput extends React.Component {
     } = this.props;
     return (
       <Modal animationType="slide" transparent={true} visible={this.state.modalVisible}>
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={{ flex: 1, marginVertical: 16 }}>
         <View style={[styles.modalContainer, modalContainer]}>
           <View style={styles.filterInputStyleContainer}>
             <TextInput autoFocus onChangeText={this.filterCountries} placeholder={filterText || 'Filter'} style={[styles.filterInputStyle, filterInputStyle]} placeholderTextColor={placeholderTextColor }/>
-            <Text style={[styles.searchIconStyle, searchIconStyle]}>🔍</Text>
+            {/*<Text style={[styles.searchIconStyle, searchIconStyle]}>🔍</Text>*/}
           </View>
           <FlatList
             style={{ flex: 1 }}
@@ -141,7 +141,7 @@ export default class IntlPhoneInput extends React.Component {
           ({ item }) => (
             <TouchableWithoutFeedback onPress={() => this.onCountryChange(item.code)}>
               <View style={[styles.countryModalStyle, countryModalStyle]}>
-                <Text style={[styles.modalFlagStyle, modalFlagStyle]}>{item.flag}</Text>
+                {/*<Text style={[styles.modalFlagStyle, modalFlagStyle]}>{item.flag}</Text>*/}
                 <View style={styles.modalCountryItemContainer}>
                   <Text style={[styles.modalCountryItemCountryNameStyle, modalCountryItemCountryNameStyle]}>{item[lang?.toLowerCase()??"en"]}</Text>
                   <Text style={[styles.modalCountryItemCountryDialCodeStyle, modalCountryItemCountryDialCodeStyle]}>{`  ${item.dialCode}`}</Text>
@@ -184,7 +184,7 @@ renderAction=()=>{
       <View style={{ ...styles.container, ...containerStyle }}>
         <TouchableOpacity onPress={() => this.showModal()}>
           <View style={styles.openDialogView}>
-            <Text style={[styles.flagStyle, flagStyle]}>{flag}</Text>
+            {/*<Text style={[styles.flagStyle, flagStyle]}>{flag}</Text>*/}
             <Text style={[styles.dialCodeTextStyle, dialCodeTextStyle]}>{this.state.dialCode}</Text>
           </View>
         </TouchableOpacity>
@@ -234,7 +234,7 @@ const styles = StyleSheet.create({
   closeTextStyle: {
     padding: 5,
     fontSize: 20,
-    color: 'black',
+    color: '#ffffff',
     fontWeight: 'bold'
   },
   modalCountryItemCountryDialCodeStyle: {
@@ -266,7 +266,7 @@ const styles = StyleSheet.create({
   },
   countryModalStyle: {
     flex: 1,
-    borderColor: 'black',
+    borderColor: 'transparent',
     borderTopWidth: 1,
     padding: 12,
     flexDirection: 'row',
@@ -274,6 +274,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   openDialogView: {
+    flex: 1,
+    padding: 16,
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+    borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center'
   },
@@ -283,6 +287,7 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
     backgroundColor: '#fff',
     color: '#424242',
+    marginBottom: 10,
   },
   searchIcon: {
     padding: 10,
@@ -298,9 +303,11 @@ const styles = StyleSheet.create({
     flex: 1
   },
   container: {
+    height: 50,
     flexDirection: 'row',
-    paddingHorizontal: 12,
-    padding: 5,
+    overflow: 'hidden',
+    // paddingHorizontal: 12,
+    // padding: 5,
     borderRadius: 10,
     alignItems: 'center',
     backgroundColor: 'white',
