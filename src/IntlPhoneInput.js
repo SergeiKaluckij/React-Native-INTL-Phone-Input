@@ -126,7 +126,7 @@ export default class IntlPhoneInput extends React.Component {
       placeholderTextColor
     } = this.props;
     return (
-      <Modal animationType="slide" transparent={false} visible={this.state.modalVisible}>
+      <Modal animationType="slide" transparent={true} visible={this.state.modalVisible}>
         <SafeAreaView style={{ flex: 1 }}>
         <View style={[styles.modalContainer, modalContainer]}>
           <View style={styles.filterInputStyleContainer}>
